@@ -17,7 +17,7 @@
 <div class="container">
     <div class="profile-container">
         <div style="text-align: center; margin-bottom: 1.5rem;">
-            <img src="{{ asset('/storage/app/public/profiles/' . ($profile->image ?? 'defaults/default.png')) }}" 
+            <img src="{{ asset('/storage/' . ($profile->image ?? 'defaults/default.png')) }}" 
                  alt="Profile image"
                  class="profile-img"
                  style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #5BA8A8; margin-bottom: 1rem;">

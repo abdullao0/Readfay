@@ -70,23 +70,51 @@ class ProfileController extends Controller
         $profile = Profile::where('user_id',$user_id)->firstOrFail();
         return view('templates.updateProfile', compact('profile'))->with('user_id',$user_id);
     }
+    // public function update(UpdateProfileRequest $request, $id)
+    // {
+    //     try {
+    //     $user_id = Auth::user()->id;
+    //     $profile = Profile::where('user_id', $id)->firstOrFail();
+    //     if ($user_id != $profile->user_id)
+    //         return response()->json(['message' => 'Unauthraized User'], 403);
+
+    //     // $profile = Profile::update($request->validated());
+    //     if ($request->hasFile('image')) {
+    //         $path = $request->file('image')->store('profiles', 'public');
+    //         $profile['image'] = $path;
+    //             // dd();
+    //     } 
+    //     else {
+    //         $profile['image'] = 'defaults/default.jpeg';
+    //     }
+    //     $profile = $profile->update(
+            
+    //        $profile->toArray());
+
+    //     return redirect()->route('index')->with('ok', 'Profile Updated.');
+    //     } 
+    //     catch (Exception $e) {
+    //         return $e;
+    //     }
+
     public function update(UpdateProfileRequest $request, $id)
     {
         try {
         $user_id = Auth::user()->id;
         $profile = Profile::where('user_id', $id)->firstOrFail();
+        $validatedData = $request->validated();
         if ($user_id != $profile->user_id)
             return response()->json(['message' => 'Unauthraized User'], 403);
 
         // $profile = Profile::update($request->validated());
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('profiles', 'public');
-            $profile['image'] = $path;
+            $validatedData['image'] = $path;
         } 
         else {
             $profile['image'] = 'defaults/default.jpeg';
         }
-        $profile = $profile->update($request->validated());
+        $profile->update($validatedData);
 
         return redirect()->route('index')->with('ok', 'Profile Updated.');
         } 
