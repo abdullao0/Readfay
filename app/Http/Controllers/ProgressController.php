@@ -71,7 +71,6 @@ class ProgressController extends Controller
         }
     }
 
-
     // The 'calculateScore' method with null check and loose comparison
     private function calculateScore($answers)
     {
@@ -119,12 +118,5 @@ class ProgressController extends Controller
 
         return $score;
     }
-
-
-
-
-
-
-
 
 }
