@@ -42,6 +42,7 @@ const off = document.querySelector(".off");
 const timer = document.getElementById("timer");
 let content = document.getElementById("content");
 let offbtn = document.getElementById("offbtn");
+let btn = document.getElementById("btn btn-primary");
 content.style.display = 'none';
 offbtn.style.display = 'none';
 
@@ -68,7 +69,7 @@ trun.onclick = () => {
 
 // stop counter and update link
 off.onclick = () => {
-    offbtn.style.display = 'none';
+    btn.style.display = 'none';
 
     if (stopLoop) {
         clearInterval(stopLoop);

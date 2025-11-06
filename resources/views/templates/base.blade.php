@@ -29,7 +29,6 @@
                     <ul class="nav-list">
                         <li><a href="/index" class="nav-link">Home</a></li>
                         <li><a href="{{ route('profile.get',$user_id) }}"  class="nav-link">Profile</a></li>                  
-                        <li><a href="/login" class="nav-link">Login</a></li>
                     </ul>
                 </nav>
                 @else

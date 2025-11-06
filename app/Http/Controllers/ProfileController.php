@@ -65,8 +65,6 @@ class ProfileController extends Controller
 
 
     public function editProfile($user_id){
-        
-        
         $profile = Profile::where('user_id',$user_id)->firstOrFail();
         return view('templates.updateProfile', compact('profile'))->with('user_id',$user_id);
     }

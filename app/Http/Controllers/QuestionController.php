@@ -24,7 +24,7 @@ class QuestionController extends Controller
         if ($questions->isEmpty()) {
             return redirect('/passage')->with('error', 'No questions found for this passage.');
         }
-        $Duration = $request->query('Duration');
+        $Duration = $request->query('Duration');        
         return view('templates.questions', compact('questions','Duration'));
     }
     public function store(StoreQuestionRequest $request,$passage_id)
